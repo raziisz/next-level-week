@@ -5,6 +5,11 @@ class PointsController {
   async index(request: Request, response: Response) {
     const { city, uf, items } = request.query;
 
+    // await knex('points').delete();
+    // await knex('point_items').delete();
+
+    // return response.json('ok')
+
     const parsedItems = String(items)
       .split(',').map(item => Number(item.trim()));
 
@@ -48,7 +53,7 @@ class PointsController {
   
     const trx = await knex.transaction();
     const point = {
-      image: 'image-fake',
+      image: 'https://images.unsplash.com/photo-1556767576-5ec41e3239ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
       name,
       email,
       whatsapp,
